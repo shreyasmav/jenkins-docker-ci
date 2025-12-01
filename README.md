@@ -2,48 +2,21 @@
 
 ## Overview
 
-This project demonstrates a CI/CD pipeline using Jenkins, Docker, and GitHub. Whenever code is committed to GitHub, it automatically triggers a Jenkins pipeline that builds a Docker image and pushes it to DockerHub.
+Jenkins Project
 
-## Project Requirements
 
-- Create a CI/CD pipeline that triggers on GitHub commits
-- Jenkins pipeline builds a Docker image upon successful completion
-- Docker image is pushed to DockerHub
-- Uses a simple Python application (`shreyas.py`)
-- Jenkinsfile contains 3 stages:
-  1. **Shreyas - Build Docker Image**
-  2. **Shreyas - Login to Dockerhub**
-  3. **Shreyas - Push image to Dockerhub**
 
-## Prerequisites
+- Create a CI/CD pipeline, so that whenever the code in commit in Github it will initiate CI/CD pipeline in Jenkins once it completes successfully then Jenkins will create a Docker image and will push Docker image to Dockerhub.
 
-- Jenkins server with Docker installed
-- DockerHub account
-- GitHub account
-- GitHub webhook configured to trigger Jenkins builds
+NOTE: I want you to use simple python application. In Jenkinsfile, please have 3 stages called ‘Your Name - Build Docker Image’, ‘Your Name - Login to Dockerhub’ and ‘Your Name - Push image to Dockerhub’.
 
-## Project Structure
 
-```
-jenkins-docker-ci/
-├── Dockerfile          # Docker configuration for the Python application
-├── Jenkinsfile         # Jenkins pipeline definition
-├── shreyas.py          # Simple Python application
-└── README.md           # This file
-```
+- Please explain your project and record yourself.
 
-## Setup Instructions
+- You need to have Dockerhub account.
 
-1. Fork or clone this repository
-2. Configure Jenkins with GitHub webhook
-3. Set up DockerHub credentials in Jenkins
-4. Run the pipeline on code commits
+- Record shouldn`t exceed 5 minutes.
 
-## Demo Recording
+- Your python application name should be yourname.py
 
-- Project explanation and demonstration
-- Recording duration: Under 5 minutes
-
-## Helpful Resources
-
-- [Jenkins CI/CD Tutorial](https://www.youtube.com/watch?v=PKcGy9oPVXg)
+Here are some beneficial links for project! https://www.youtube.com/watch?v=PKcGy9oPVXg
