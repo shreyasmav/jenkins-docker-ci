@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKERHUB_USER = 'shreyasmav'
-        // “dockerhub-creds” is the ID of the Jenkins credentials you will create
         DOCKERHUB_CREDENTIALS = 'dockerhub-creds'
         IMAGE_NAME = 'shreyas-ci-demo'
     }
@@ -16,15 +15,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from the same Git repo that contains this Jenkinsfile
-                checkout scm
+                // generated pipeline script from Jenkins Pipeline Syntax
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shreyasmav/jenkins-docker-ci']])
             }
         }
 
         stage('Shreyas - Build Docker Image') {
             steps {
                 script {
-                    sh """
+                    bat """
                       echo "Building Docker image..."
                       docker build -t ${DOCKERHUB_USER}/${IMAGE_NAME}:${BUILD_NUMBER} .
                     """
@@ -40,9 +39,9 @@ pipeline {
                         usernameVariable: 'DOCKERHUB_USERNAME',
                         passwordVariable: 'DOCKERHUB_PASSWORD'
                     )]) {
-                        sh """
-                          echo "Logging in to Docker Hub..."
-                          echo "${DOCKERHUB_PASSWORD}" | docker login -u "${DOCKERHUB_USERNAME}" --password-stdin
+                        bat """
+                          echo Logging in to Docker Hub...
+                          docker login -u %DOCKERHUB_USERNAME% -p %DOCKERHUB_PASSWORD%
                         """
                     }
                 }
@@ -52,8 +51,8 @@ pipeline {
         stage('Shreyas - Push image to Dockerhub') {
             steps {
                 script {
-                    sh """
-                      echo "Pushing Docker image to Docker Hub..."
+                    bat """
+                      echo Pushing Docker image to Docker Hub...
                       docker push ${DOCKERHUB_USER}/${IMAGE_NAME}:${BUILD_NUMBER}
                     """
                 }
